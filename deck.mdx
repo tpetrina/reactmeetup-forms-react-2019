@@ -1,0 +1,107 @@
+import Code from 'mdx-code';
+
+# Why is building forms in React difficult
+
+- Toni Petrina
+- github.com/tpetrina
+- @to_pe
+
+---
+
+Agenda
+
+- Introduction
+- Complications
+- Potential solutions
+- Conclusion
+
+---
+
+import SimpleForm from './SimpleForm.js'
+
+<SimpleForm />
+
+---
+
+import { CodeSurfer } from "mdx-deck-code-surfer"
+
+<CodeSurfer
+  title="Form with state"
+  code={require("!raw-loader!./snippet-1-simpleform-state")}
+  lang="javascript"
+  showNumbers={false}
+  dark={false}
+  steps={[
+    { notes: "Using state is easy!"},
+    { lines: [2], notes: "Declare initial values" },
+    { lines: [13], notes: "Use the value" },
+    { lines: [14], notes: "Set the value" },
+  ]}
+/>
+
+---
+
+<CodeSurfer
+  title="Form with hooks"
+  code={require("!raw-loader!./snippet-1-simpleform-hooks")}
+  lang="javascript"
+  showNumbers={false}
+  dark={false}
+  steps={[
+    { notes: "Using hooks is easier!"},
+    { lines: [2], notes: "Default value, current value and setter in one" },
+    { lines: [10], notes: "Use the value" },
+    { lines: [11], notes: "Set the value" },
+  ]}
+/>
+
+---
+
+### Let's recap
+
+- Initial value
+- Update value
+- Use the current value
+
+---
+
+import { LiveCode } from 'mdx-deck-live-code';
+
+<LiveCode
+  title="Digression: adding placeholder"
+  code={`
+<input type='text'
+       placeholder='Enter your name please...'
+       />`}
+/>
+
+---
+
+Scaling up!
+
+import SimpleForm2 from './SimpleForm2.js'
+
+<SimpleForm2 />
+
+---
+
+import ultramin from "prism-react-renderer/themes/ultramin"
+
+<CodeSurfer
+  title="Complex form"
+  code={require("!raw-loader!./SimpleForm2.js")}
+  lang="javascript"
+  showNumbers={false}
+  dark={true}
+  steps={[
+    { notes: "More realistic example!"},
+    { lines: [4], notes: "State is becoming more complex" },
+    { range: [15,21], notes:"Numbers are difficult" },
+    { lines: [30], notes: "Using maxLength" },
+    { lines: [37], notes: "Proper type for input" },
+    { lines: [49], notes: "This field is required" },
+    { lines: [9], notes: "We ignored this the last time, but we need it" },
+  ]}
+/>
+
+---

@@ -1,0 +1,23 @@
+class SimpleForm extends React.PureComponent {
+  state = { name: "" };
+
+  render() {
+    const { name } = this.state;
+    return (
+      <form>
+        <div>
+          <label htmlFor="name">First name:</label>
+          <input
+            type="text"
+            name="name"
+            value={name}
+            onChange={e => this.setState({ name: e.target.value })}
+          />
+        </div>
+        <input type="submit" value="send" />
+        <hr />
+        Your name is {name}
+      </form>
+    );
+  }
+}

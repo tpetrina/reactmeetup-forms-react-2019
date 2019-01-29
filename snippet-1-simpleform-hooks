@@ -1,0 +1,19 @@
+function SimpleFormHooks() {
+  const [name, setName] = useState("");
+  return (
+    <form>
+      <div>
+        <label htmlFor="name">First name:</label>
+        <input
+          type="text"
+          name="name"
+          value={name}
+          onChange={e => setName(e.target.value)}
+        />
+      </div>
+      <input type="submit" value="send" />
+      <hr />
+      Your name is {name}
+    </form>
+  );
+}
