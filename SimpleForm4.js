@@ -1,10 +1,17 @@
 import React from 'react';
+import { sendRequest } from './sendRequest';
 
-export default class SimpleForm2 extends React.PureComponent {
-  state = { name: '', email: '', address: '', quantity: 0 };
+export default class SimpleForm4 extends React.PureComponent {
+  state = {
+    isSending: false,
+    name: '',
+    email: 'john@smith.com',
+    address: '1st street',
+    quantity: 1,
+  };
 
   render() {
-    const { name, email, address, quantity } = this.state;
+    const { isSending, name, email, address, quantity } = this.state;
     return (
       <form onSubmit={this.submit}>
         <div>
@@ -22,17 +29,17 @@ export default class SimpleForm2 extends React.PureComponent {
           />
         </div>
         <div>
-          <label htmlFor="firstName">First name:</label>
+          <label htmlFor="name">First name:</label>
           <input
             type="text"
-            id="firstName"
+            id="name"
             value={name}
             maxLength={10}
             onChange={e => this.setState({ name: e.target.value })}
           />
         </div>
         <div>
-          <label htmlFor="email">Email:</label>
+          <label htmlFor="email">First name:</label>
           <input
             type="email"
             id="email"
@@ -50,7 +57,7 @@ export default class SimpleForm2 extends React.PureComponent {
             onChange={e => this.setState({ address: e.target.value })}
           />
         </div>
-        <input type="submit" value="send" />
+        <input type="submit" value="send" disabled={isSending} />
         <hr />
         User: {name}, {email}, {address}.
       </form>
@@ -59,6 +66,11 @@ export default class SimpleForm2 extends React.PureComponent {
 
   submit = e => {
     e.preventDefault();
-    alert('huh?');
+    this.setState({ isSending: true });
+
+    sendRequest()
+      .then(() => {})
+      .catch(() => {})
+      .then(() => this.setState({ isSending: false }));
   };
 }

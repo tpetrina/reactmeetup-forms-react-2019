@@ -1,7 +1,12 @@
 import React from 'react';
 
-export default class SimpleForm2 extends React.PureComponent {
-  state = { name: '', email: '', address: '', quantity: 0 };
+export default class SimpleForm3 extends React.PureComponent {
+  state = {
+    name: '',
+    email: 'john@smith.com',
+    address: '1st street',
+    quantity: 1,
+  };
 
   render() {
     const { name, email, address, quantity } = this.state;
@@ -22,17 +27,17 @@ export default class SimpleForm2 extends React.PureComponent {
           />
         </div>
         <div>
-          <label htmlFor="firstName">First name:</label>
+          <label htmlFor="name">First name:</label>
           <input
             type="text"
-            id="firstName"
+            id="name"
             value={name}
             maxLength={10}
             onChange={e => this.setState({ name: e.target.value })}
           />
         </div>
         <div>
-          <label htmlFor="email">Email:</label>
+          <label htmlFor="email">First name:</label>
           <input
             type="email"
             id="email"
@@ -59,6 +64,21 @@ export default class SimpleForm2 extends React.PureComponent {
 
   submit = e => {
     e.preventDefault();
-    alert('huh?');
+    switch (this.state.quantity) {
+      case 1:
+        break;
+
+      case 2:
+        setTimeout(() => {
+          alert('it took you a while...');
+        }, 2000);
+        break;
+
+      case 3:
+        setTimeout(() => {
+          alert('SERVER FAIL! ALL YOUR FORMS ARE BELONG TO US');
+        }, 2000);
+        break;
+    }
   };
 }

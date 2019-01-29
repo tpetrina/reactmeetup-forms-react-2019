@@ -1,4 +1,6 @@
-import Code from 'mdx-code';
+import { CodeSurfer } from "mdx-deck-code-surfer"
+import shadesOfPurple from "prism-react-renderer/themes/shadesOfPurple"
+import ultramin from "prism-react-renderer/themes/ultramin"
 
 # Why is building forms in React difficult
 
@@ -23,14 +25,13 @@ import SimpleForm from './SimpleForm.js'
 
 ---
 
-import { CodeSurfer } from "mdx-deck-code-surfer"
-
 <CodeSurfer
   title="Form with state"
   code={require("!raw-loader!./snippet-1-simpleform-state")}
   lang="javascript"
   showNumbers={false}
   dark={false}
+  theme={ultramin}
   steps={[
     { notes: "Using state is easy!"},
     { lines: [2], notes: "Declare initial values" },
@@ -65,14 +66,18 @@ import { CodeSurfer } from "mdx-deck-code-surfer"
 
 ---
 
-import { LiveCode } from 'mdx-deck-live-code';
+<CodeSurfer
+  title="Simplification"
+  code={require("!raw-loader!./snippet-2-input.js")}
+  lang="javascript"
+/>
 
-<LiveCode
-  title="Digression: adding placeholder"
-  code={`
-<input type='text'
-       placeholder='Enter your name please...'
-       />`}
+---
+
+<CodeSurfer
+  title="Digression: a simple placeholder"
+  code={require("!raw-loader!./snippet-2-placeholder")}
+  lang="html"
 />
 
 ---
@@ -85,18 +90,16 @@ import SimpleForm2 from './SimpleForm2.js'
 
 ---
 
-import ultramin from "prism-react-renderer/themes/ultramin"
-
 <CodeSurfer
   title="Complex form"
   code={require("!raw-loader!./SimpleForm2.js")}
   lang="javascript"
   showNumbers={false}
-  dark={true}
+  theme={ultramin}
   steps={[
     { notes: "More realistic example!"},
     { lines: [4], notes: "State is becoming more complex" },
-    { range: [15,21], notes:"Numbers are difficult" },
+    { lines: [13,15,16,17,18,19,20,21], notes:"Numbers are difficult" },
     { lines: [30], notes: "Using maxLength" },
     { lines: [37], notes: "Proper type for input" },
     { lines: [49], notes: "This field is required" },
@@ -105,3 +108,124 @@ import ultramin from "prism-react-renderer/themes/ultramin"
 />
 
 ---
+
+But before we start simplifying, let's handle requests...
+
+import SimpleForm3 from './SimpleForm3.js'
+
+<SimpleForm3 />
+
+---
+
+Now we'll handle it!
+
+import SimpleForm4 from './SimpleForm4.js'
+
+<SimpleForm4 />
+
+---
+
+<CodeSurfer
+  title="Async form"
+  code={require("!raw-loader!./SimpleForm4.js")}
+  lang="javascript"
+  showNumbers={false}
+  theme={ultramin}
+  steps={[
+    { notes: "Async is annoying!"},
+    { lines: [6], notes: "State now remembers action" },
+    { lines: [60], notes: "Disable button" },
+    { lines: [69, 74], notes: "Handle promises" },
+  ]}
+/>
+
+---
+
+Our forms are a mix of:
+
+- presentation: label text, placeholder
+- state management for values
+- handling async state
+- client validation
+- server validation/errors
+
+---
+
+<CodeSurfer
+  title="Simplification?"
+  code={require("!raw-loader!./snippet-5-input.js")}
+  lang="javascript"
+/>
+
+---
+
+<CodeSurfer
+  title="Simplification? :("
+  code={require("!raw-loader!./snippet-6-input.js")}
+  lang="javascript"
+/>
+
+---
+
+But there are third-party libraries for this:
+
+- formik
+- react-final-form (react-final-form-hooks)
+- redux-forms
+
+---
+
+<CodeSurfer
+  title="Formik"
+  code={require("!raw-loader!./snippet-formik.js")}
+  lang="javascript"
+  steps={[
+    { notes: 'Formik' },
+    { lines: [3], notes: 'Importing form, controls and error controls' },
+    { lines: [10], notes: 'Initial values' },
+    { range: [25, 44], notes: 'Rendering is done as render prop with custom controls' },
+    { lines: [40], notes: 'Implicit submit, handle disabled state' },
+    { range: [11, 24], notes: 'Handling of async calls, transforming errors' },
+  ]}
+/>
+
+
+---
+
+<CodeSurfer
+  title="Redux form"
+  code={require("!raw-loader!./snippet-redux-form.js")}
+  lang="javascript"
+  steps={[
+    { notes: 'Redux form' },
+    { lines: [2], notes: 'Special controls' },
+    { range: [54, 71], notes: 'Rendering using custom controls with optional renderers' },
+    { range: [34, 49], notes: 'Custom renderer' },
+    { lines: [52, 54], notes: 'Submitting is done through parent' },
+    { range: [4, 24], notes: 'Validation' },
+  ]}
+/>
+
+---
+
+<CodeSurfer
+  title="React Final Form Hooks"
+  code={require("!raw-loader!./snippet-react-final-form-hooks.js")}
+  lang="javascript"
+  steps={[
+    { notes: 'React Final Form' },
+    { lines: [1], notes: 'Special controls' },
+    { range: [4, 10], notes: 'Initial values and state logic' },
+    { range: [13, 31], notes: 'Rendering using regular controls' },
+    { lines: [28], notes: 'Handling async state' },
+  ]}
+/>
+
+---
+
+Conclusion
+
+- Forms are hard
+- All solutions are complex because the problem is complex
+- Do standardize on something!
+- Follow good UX practices

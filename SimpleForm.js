@@ -11,7 +11,7 @@ export default class SimpleForm extends React.PureComponent {
           <label htmlFor="name">First name:</label>
           <input
             type="text"
-            name="name"
+            id="name"
             value={name}
             onChange={e => this.setState({ name: e.target.value })}
           />
