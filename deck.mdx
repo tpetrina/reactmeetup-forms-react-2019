@@ -146,8 +146,9 @@ Our forms are a mix of:
 - presentation: label text, placeholder
 - state management for values
 - handling async state
-- client validation
-- server validation/errors
+- basic validation
+
+...and there is more
 
 ---
 
@@ -167,7 +168,80 @@ Our forms are a mix of:
 
 ---
 
-But there are third-party libraries for this:
+# Validation
+
+We have several kind
+- built-in field validation (on DOM)
+- custom field validation
+- async validation from server
+- entire form validation
+
+---
+
+# Client validation
+
+Define a set of rules, check form input and notify in case of any errors.
+
+import ValidationForm1 from './ValidationForm1'
+
+<ValidationForm1 />
+
+---
+
+<CodeSurfer
+  title="Simple client validation"
+  code={require("!raw-loader!./ValidationForm1.js")}
+  lang="javascript"
+  steps={[
+    { notes: 'Client validation involves multiple parts' },
+    { range: [3, 7], notes: 'Simplify custom error control' },
+    { lines: [15], notes: 'Define special state for errors. Similar for success' },
+    { range: [21, 31], notes: 'Our input has state and error indicator' },
+    { lines: [50, 62], notes: 'The sooner users see errors, sooner they will address them' },
+    { range: [75, 79], notes: 'Disable button in case of an error' },
+    { range: [84, 88], notes: 'Repetitive?' },
+    { range: [91, 98], notes: 'Spidey sense...' },
+    { range: [100, 109], notes: '...is tingling!' },
+  ]}
+/>
+
+---
+
+# UX considerations
+
+- When to display warning, error or success indicator
+- Where to display messages for composite errors involving multiple fields
+- When to clear it
+- Do we prevent form submission
+- Help users _before_ they make a mistake through help instructions or character counters
+
+---
+
+# Server side validation
+
+Once the server responds with an error, it can be
+- field specific - potentially fixable issue in this field
+- general error - potentially fixable issue in this form
+
+---
+
+import ValidationForm2 from './ValidationForm2'
+
+<ValidationForm2 />
+
+---
+
+## Our forms are a mix of:
+
+- presentation: label text, placeholder, constraints
+- state management for values
+- handling async state
+- client validation
+- server validation/errors
+
+---
+
+## But there are third-party libraries for this:
 
 - formik
 - react-final-form (react-final-form-hooks)
