@@ -17,7 +17,7 @@ export default class SimpleForm2 extends React.PureComponent {
             step={1}
             value={quantity}
             onChange={e =>
-              this.setState({ quantity: parseInt(e.target.value, 0) })
+              this.setState({ quantity: parseInt(e.target.value, 10) })
             }
           />
         </div>
