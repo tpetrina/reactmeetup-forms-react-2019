@@ -28,7 +28,7 @@ import SimpleForm from './SimpleForm.js'
 <CodeSurfer
   title="Form with state"
   code={require("!raw-loader!./snippet-1-simpleform-state")}
-  lang="javascript"
+  lang="jsx"
   showNumbers={false}
   dark={false}
   theme={ultramin}
@@ -45,7 +45,7 @@ import SimpleForm from './SimpleForm.js'
 <CodeSurfer
   title="Form with hooks"
   code={require("!raw-loader!./snippet-1-simpleform-hooks")}
-  lang="javascript"
+  lang="jsx"
   showNumbers={false}
   dark={false}
   steps={[
@@ -69,7 +69,7 @@ import SimpleForm from './SimpleForm.js'
 <CodeSurfer
   title="Simplification"
   code={require("!raw-loader!./snippet-2-input.js")}
-  lang="javascript"
+  lang="jsx"
 />
 
 ---
@@ -93,7 +93,7 @@ import SimpleForm2 from './SimpleForm2.js'
 <CodeSurfer
   title="Complex form"
   code={require("!raw-loader!./SimpleForm2.js")}
-  lang="javascript"
+  lang="jsx"
   showNumbers={false}
   theme={ultramin}
   steps={[
@@ -128,7 +128,7 @@ import SimpleForm4 from './SimpleForm4.js'
 <CodeSurfer
   title="Async form"
   code={require("!raw-loader!./SimpleForm4.js")}
-  lang="javascript"
+  lang="jsx"
   showNumbers={false}
   theme={ultramin}
   steps={[
@@ -155,7 +155,7 @@ Our forms are a mix of:
 <CodeSurfer
   title="Simplification?"
   code={require("!raw-loader!./snippet-5-input.js")}
-  lang="javascript"
+  lang="jsx"
 />
 
 ---
@@ -163,7 +163,7 @@ Our forms are a mix of:
 <CodeSurfer
   title="Simplification? :("
   code={require("!raw-loader!./snippet-6-input.js")}
-  lang="javascript"
+  lang="jsx"
 />
 
 ---
@@ -191,7 +191,7 @@ import ValidationForm1 from './ValidationForm1'
 <CodeSurfer
   title="Simple client validation"
   code={require("!raw-loader!./ValidationForm1.js")}
-  lang="javascript"
+  lang="jsx"
   steps={[
     { notes: 'Client validation involves multiple parts' },
     { range: [3, 7], notes: 'Simplify custom error control' },
@@ -241,6 +241,36 @@ import ValidationForm2 from './ValidationForm2'
 
 ---
 
+```
+{
+  'name': 'email',
+  'type: 'email',
+  'rules': {'required', 'email regex', 'maxLength=50'}
+}
+```
+---
+
+# General approaches
+
+- Bunch of basic elements like `TextInput`, `PasswordInput`
+- Hack it with `React.Children.map`
+- Generic `Field` component with custom rendering
+
+---
+
+<CodeSurfer
+  title="Children rewrite"
+  code={require("!raw-loader!./snippet-bindingcontext.js")}
+  lang="jsx"
+  steps={[
+    { range: [1, 10], notes: 'Simple usage' },
+    { range: [12, 24], notes: 'Rewriting the structure by injecting state and handler' },
+    { range: [26, 35], notes: 'Recursion is nice, but are you sure you are the only one doing it?' },
+  ]}
+/>
+
+---
+
 ## But there are third-party libraries for this:
 
 - formik
@@ -252,7 +282,7 @@ import ValidationForm2 from './ValidationForm2'
 <CodeSurfer
   title="Formik"
   code={require("!raw-loader!./snippet-formik.js")}
-  lang="javascript"
+  lang="jsx"
   steps={[
     { notes: 'Formik' },
     { lines: [3], notes: 'Importing form, controls and error controls' },
@@ -269,7 +299,7 @@ import ValidationForm2 from './ValidationForm2'
 <CodeSurfer
   title="Redux form"
   code={require("!raw-loader!./snippet-redux-form.js")}
-  lang="javascript"
+  lang="jsx"
   steps={[
     { notes: 'Redux form' },
     { lines: [2], notes: 'Special controls' },
@@ -285,7 +315,7 @@ import ValidationForm2 from './ValidationForm2'
 <CodeSurfer
   title="React Final Form Hooks"
   code={require("!raw-loader!./snippet-react-final-form-hooks.js")}
-  lang="javascript"
+  lang="jsx"
   steps={[
     { notes: 'React Final Form' },
     { lines: [1], notes: 'Special controls' },
